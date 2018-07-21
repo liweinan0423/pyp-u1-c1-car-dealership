@@ -1,7 +1,12 @@
 #!/bin/bash
 
 echo "Creating virtual environment:"
-virtualenv -p /usr/bin/python3.4 venv
+PYTHON=/usr/bin/python3.4
+if [ ! -x $PYTHON ]; then
+  PYTHON=/usr/bin/python;
+fi
+echo "using python: $PYTHON"
+virtualenv -p $PYTHON venv
 
 echo "Activate virtual environment:"
 source ~/workspace/venv/bin/activate
